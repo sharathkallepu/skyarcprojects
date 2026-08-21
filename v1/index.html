@@ -1,0 +1,2453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SKYARC</title>
+    <link rel="icon" type="image/png" href="/images/sapfavicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    min-height: 340px;
+}
+
+/* GOOGLE MAP - LEFT */
+.footer-map {
+    width: 100%;
+    min-height: 450px;
+    overflow: hidden;
+}
+
+.footer-map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+}
+
+
+/* FOOTER CONTENT - RIGHT */
+.footer-top {
+    padding: 70px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-map,
+    .footer-map iframe {
+        min-height: 350px;
+    }
+
+    .footer-top {
+        min-height: 450px;
+        padding: 50px 8%;
+    }
+
+}
+
+
+.instagram-icon {
+    font-size: 24px;
+}
+
+
+.instagram-icon i {
+    font-size: 30px;
+
+    background: linear-gradient(
+        45deg,
+        #feda75,
+        #fa7e1e,
+        #d62976,
+        #962fbf,
+        #4f5bd5
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #111;
+            color: #f1f1ed;
+            font-family: "DM Sans", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 28px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: .3s ease;
+        }
+
+        .logo,
+        .footer-logo {
+            font-family: "Montserrat", sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span,
+        .footer-logo span {
+            font-size: 32px;
+        }
+
+        .menu-btn {
+            border: 0;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 10px;
+        }
+
+        .menu-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-lines span {
+            width: 18px;
+            height: 1px;
+            background: white;
+            display: block;
+        }
+
+        .menu-lines span:nth-child(2) {
+            width: 12px;
+        }
+
+        .menu-btn b {
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           FULL SCREEN MENU
+        ========================== */
+
+        .fullscreen-menu {
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            background: #e7e4dc;
+            color: #111;
+            transform: translateY(-100%);
+            transition: transform 0.7s cubic-bezier(.77, 0, .18, 1);
+        }
+
+        .fullscreen-menu.active {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 4%;
+            top: 30px;
+            background: none;
+            border: 0;
+            cursor: pointer;
+            color: #111;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .menu-links {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10%;
+        }
+
+        .menu-link {
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(45px, 8vw, 120px);
+            line-height: 1;
+            font-weight: 600;
+            transition: padding-left .3s ease;
+        }
+
+        .menu-link:hover {
+            padding-left: 30px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            background:
+                url("https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=2200&q=90")
+                center / cover no-repeat;
+
+            animation: heroZoom 12s ease forwards;
+            will-change: transform;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, .45),
+                    rgba(0, 0, 0, .05) 45%,
+                    rgba(0, 0, 0, .75)
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            height: 100%;
+
+            padding: 130px 5% 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-top {
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .hero-top span {
+            margin: 0 18px;
+            opacity: .6;
+        }
+
+        .hero-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .hero-title {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(52px, 8vw, 130px);
+            font-weight: 500;
+
+            line-height: .88;
+            letter-spacing: -5px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-title span:nth-child(2) {
+            margin-left: 8vw;
+        }
+
+        .scroll-down {
+            font-size: 10px;
+            letter-spacing: 1px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            align-items: center;
+        }
+
+        .scroll-down i {
+            font-size: 25px;
+            font-style: normal;
+
+            animation: bounce 1.5s infinite;
+        }
+
+
+        /* =========================
+           REVEAL ANIMATION
+        ========================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: reveal .9s forwards;
+        }
+
+        .delay-1 {
+            animation-delay: .2s;
+        }
+
+        .delay-2 {
+            animation-delay: .4s;
+        }
+
+
+        /* =========================
+           LIFE AT CENTRE
+        ========================== */
+
+        .life {
+            background: #e7e4dc;
+            color: #181818;
+
+            padding: 130px 5%;
+
+            position: relative;
+        }
+
+        .section-number {
+            position: absolute;
+            top: 40px;
+            right: 5%;
+            font-size: 12px;
+        }
+
+        .life-heading {
+            margin-bottom: 80px;
+        }
+
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+        }
+
+        .life-heading h2,
+        .projects-header h2 {
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(55px, 9vw, 140px);
+
+            line-height: .82;
+            letter-spacing: -5px;
+            font-weight: 500;
+        }
+
+        .life-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .life-card {
+            min-height: 680px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-image {
+            height: 420px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            transition: transform .8s ease;
+        }
+
+        .life-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 25px 0;
+        }
+
+        .card-content > span {
+            font-size: 10px;
+        }
+
+        .card-content h3 {
+            font-family: "Montserrat", sans-serif;
+            font-size: 38px;
+            margin: 30px 0 20px;
+            font-weight: 500;
+        }
+
+        .card-content h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .card-content p {
+            max-width: 360px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+
+        /* =========================
+           BELIEF
+        ========================== */
+
+        .belief {
+            min-height: 90vh;
+            background: #111;
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 5%;
+        }
+
+        .belief-inner {
+            width: 100%;
+        }
+
+        .belief-inner > p:first-child {
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+        }
+
+        .belief h2 {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(65px, 14vw, 220px);
+
+            line-height: .75;
+            letter-spacing: -10px;
+            font-weight: 500;
+        }
+
+        .belief h2 span {
+            display: block;
+            margin-left: 15%;
+            font-size: .45em;
+        }
+
+        .belief-text {
+            max-width: 550px;
+            margin: 70px 0 0 auto;
+
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           DESIGN BEYOND STRUCTURES
+        ========================== */
+
+        .beyond {
+            min-height: 100vh;
+
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+
+            background: #d5d3cc;
+            color: #171717;
+        }
+
+        .beyond-image {
+            min-height: 800px;
+            overflow: hidden;
+        }
+
+        .beyond-content {
+            padding: 12vw 8%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .beyond-content h2 {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(50px, 6vw, 95px);
+
+            line-height: .85;
+            letter-spacing: -4px;
+
+            font-weight: 500;
+
+            margin-bottom: 45px;
+        }
+
+        .beyond-content h2 span {
+            margin-left: 13%;
+        }
+
+        .beyond-content > p {
+            line-height: 1.8;
+            max-width: 500px;
+            color: #555;
+        }
+
+        .text-link {
+            display: inline-flex;
+
+            margin-top: 50px;
+
+            font-size: 11px;
+            letter-spacing: 1px;
+
+            align-items: center;
+            gap: 15px;
+        }
+
+        .text-link span {
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           RESEARCH
+        ========================== */
+
+        .research {
+            padding: 150px 5%;
+            background: #20211f;
+        }
+
+        .research-content {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 10%;
+        }
+
+        .research-content > h2 {
+            grid-column: 1;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(45px, 6vw, 100px);
+
+            line-height: .85;
+            letter-spacing: -4px;
+
+            font-weight: 500;
+        }
+
+        .research-text {
+            grid-column: 2;
+            align-self: end;
+        }
+
+        .research-text h3 {
+            font-size: 22px;
+            line-height: 1.35;
+            font-weight: 400;
+            margin-bottom: 35px;
+        }
+
+        .research-text p {
+            color: #aaa;
+            max-width: 580px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================== */
+
+        .projects {
+            background: #e7e4dc;
+            color: #161616;
+
+            padding: 140px 5%;
+        }
+
+        .projects-header {
+            margin-bottom: 120px;
+        }
+
+        .projects-header > p:last-child {
+            max-width: 430px;
+            margin: 50px 0 0 auto;
+
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 150px;
+        }
+
+        .project-item {
+            display: grid;
+
+            grid-template-columns: 1.1fr .9fr;
+
+            align-items: center;
+
+            gap: 8%;
+        }
+
+        .project-item.reverse {
+            grid-template-columns: .9fr 1.1fr;
+        }
+
+        .project-item.reverse .project-image {
+            order: 2;
+        }
+
+        .project-item.reverse .project-info {
+            order: 1;
+        }
+
+        .project-image {
+            height: 650px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            transition: transform 1s ease;
+        }
+
+        .project-item:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-info > span {
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .project-info h3 {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(28px, 3vw, 55px);
+
+            line-height: .95;
+
+            font-weight: 500;
+            letter-spacing: -2px;
+
+            margin: 35px 0;
+        }
+
+        .project-info a {
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .all-projects {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        .all-projects a {
+            font-size: 12px;
+            border-bottom: 1px solid #222;
+
+            padding-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           STATEMENT
+        ========================== */
+
+        .statement {
+            min-height: 90vh;
+
+            padding: 120px 5%;
+
+            background: #111;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .statement > p {
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+
+        .statement h2 {
+            display: flex;
+            flex-direction: column;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(70px, 13vw, 210px);
+
+            line-height: .78;
+            letter-spacing: -10px;
+
+            font-weight: 500;
+        }
+
+        .statement h2 span:nth-child(2) {
+            margin-left: 12%;
+        }
+
+        .statement h2 span:nth-child(3) {
+            margin-left: 25%;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about {
+            padding: 150px 5%;
+
+            background: #d7d4cb;
+            color: #181818;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10%;
+        }
+
+        .about-intro h2 {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(55px, 7vw, 110px);
+
+            line-height: .82;
+            letter-spacing: -5px;
+
+            font-weight: 500;
+
+            margin-bottom: 50px;
+        }
+
+        .about-intro > p:last-child {
+            max-width: 480px;
+
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .values {
+            display: flex;
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            gap: 60px;
+        }
+
+        .values article {
+            border-top: 1px solid #999;
+            padding-top: 20px;
+        }
+
+        .values span {
+            font-size: 10px;
+        }
+
+        .values h3 {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 32px;
+            font-weight: 500;
+
+            margin: 20px 0;
+        }
+
+        .values p {
+            line-height: 1.7;
+            color: #555;
+            max-width: 550px;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+           /* min-height: 90vh;*/
+
+            display: flex;
+            align-items: center;
+
+            padding: 100px 5%;
+
+            background: #1b1b1a;
+        }
+
+        .contact p {
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+
+        .contact h2 {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(90px, 17vw, 260px);
+
+            line-height: .7;
+            letter-spacing: -12px;
+
+            font-weight: 500;
+
+            /*margin-bottom: 80px;*/
+        }
+
+        .contact a {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111;
+
+            padding: 50px 5% 25px;
+
+            border-top: 1px solid #333;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            padding-bottom: 80px;
+        }
+
+        /*.footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-nav a,
+        .footer-contact {
+            font-size: 12px;
+        } */
+
+        .footer-contact {
+            justify-self: center;
+            line-height: 2;
+            
+        }
+
+        .footer-bottom {
+            padding-top: 25px;
+            border-top: 1px solid #333;
+
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 13px;
+            letter-spacing: 1px;
+
+            color: #111;
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================== */
+
+        @keyframes heroZoom {
+            from {
+                transform: scale(1.12);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+
+        /* =========================
+           MOBILE / TABLET
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .life-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .life-card {
+                min-height: auto;
+            }
+
+            .beyond {
+                grid-template-columns: 1fr;
+            }
+
+            .beyond-image {
+                min-height: 500px;
+            }
+
+            .research-content {
+                grid-template-columns: 1fr;
+            }
+
+            .research-text,
+            .research-content > h2 {
+                grid-column: auto;
+            }
+
+            .research-text {
+                margin-top: 60px;
+            }
+
+            .project-item,
+            .project-item.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .project-item.reverse .project-image,
+            .project-item.reverse .project-info {
+                order: initial;
+            }
+
+            .project-image {
+                height: 500px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .values {
+                margin-top: 40px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .header {
+                padding: 20px 6%;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .hero-content {
+                padding: 110px 6% 35px;
+            }
+
+            .hero-top {
+                line-height: 2;
+                max-width: 270px;
+            }
+
+            .hero-top span {
+                margin: 0 7px;
+            }
+
+            .hero-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .hero-title {
+                letter-spacing: -3px;
+            }
+
+            .hero-title span:nth-child(2) {
+                margin-left: 5vw;
+            }
+
+            .life,
+            .projects,
+            .research,
+            .about {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .belief h2 {
+                letter-spacing: -5px;
+            }
+
+            .statement h2 {
+                letter-spacing: -5px;
+            }
+
+            .contact h2 {
+                letter-spacing: -6px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .footer-contact {
+                justify-self: start;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .project-list {
+                gap: 90px;
+            }
+
+            .projects-header {
+                margin-bottom: 70px;
+            }
+
+            .card-image {
+                height: 350px;
+            }
+        }
+
+        .hero-slider {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+    transform: scale(1.08);
+
+    transition:
+        opacity 1.5s ease-in-out,
+        transform 6s ease-out;
+
+    will-change: opacity, transform;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* HERO IMAGES */
+
+.hero-slide:nth-child(1) {
+    background-image: url("https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=2200&q=90");
+}
+
+.hero-slide:nth-child(2) {
+    background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=90");
+}
+
+.hero-slide:nth-child(3) {
+    background-image: url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2200&q=90");
+}
+
+.hero-slide:nth-child(4) {
+    background-image: url("https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=90");
+}
+   
+   
+
+/* =========================
+   DESKTOP NAVIGATION
+========================= */
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-menu div {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 999px;
+}
+
+.navbar-menu a {
+    color: #111;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-menu a:hover {
+    opacity: 0.65;
+}
+
+/* Mobile button hidden on desktop */
+.mobile-menu-btn {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-menu-btn b {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Mobile menu hidden on desktop */
+.mobile-menu {
+    display: none;
+}
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+
+    .navbar-menu {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        width: min(80vw, 380px);
+        z-index: 3000;
+
+        background: #e7e4dc;
+        color: #111;
+
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(.77, 0, .18, 1);
+
+        padding: 80px 30px;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .mobile-menu.active {
+        transform: translateX(0);
+    }
+
+    .mobile-menu .close-btn {
+        position: absolute;
+        top: 25px;
+        right: 30px;
+        border: 0;
+        background: transparent;
+        color: #111;
+        cursor: pointer;
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .mobile-menu .menu-links {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 25px;
+        padding: 0;
+    }
+
+    .mobile-menu .menu-link {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(28px, 8vw, 45px);
+        font-weight: 600;
+        line-height: 1;
+        color: #111;
+        transition: padding-left 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-menu .menu-link:hover {
+        padding-left: 10px;
+        opacity: 0.65;
+    }
+
+    .logo img {
+        width: 120px !important;
+        height: auto !important;
+    }
+}
+
+
+/* banner item */
+.counter-stat {
+  text-align: center;
+  padding: 55px 0px 40px 0px;
+  position: relative;
+}
+
+.counter-stat i {
+  display: block;
+  color: rgba(255, 255, 255, 0.06);
+  font-size: 70px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  -webkit-transform: translateY(25px);
+  transform: translateY(25px);
+}
+
+.counter-stat span {
+  font-size: 70px;
+  color: #fff;
+}
+
+.counter-stat p {
+  margin-bottom: 0px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cta-section {
+  margin-bottom: -80px;
+}
+
+
+.cta {
+  background: url("../images/bg/bg-4.jpg") no-repeat 50% 50%;
+  background-size: cover;
+  position: relative;
+}
+
+.cta:before {
+  position: absolute;
+  content: "";
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(34, 58, 102, 0.95);
+}
+
+/* ///// */
+
+/* ================================
+   Statistics Banner
+================================ */
+
+.stats-banner {
+    width: 100%;
+    min-height: 266px;
+
+    background: #344a6d;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    align-items: center;
+
+    padding: 45px 6%;
+
+    box-sizing: border-box;
+}
+
+
+.stat-item {
+    text-align: center;
+}
+
+
+.stat-number {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 25px;
+}
+
+
+.stat-number span {
+    font-size: 30px;
+    font-weight: 400;
+
+    color: #8ea1ba;
+
+    vertical-align: middle;
+
+    margin-left: 5px;
+}
+
+
+.stat-label {
+    color: #d4d8df;
+
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* Tablet */
+@media (max-width: 900px) {
+
+    .stats-banner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 20px;
+    }
+
+    .stat-number {
+        font-size: 30px;
+    }
+
+}
+
+
+/* Mobile */
+@media (max-width: 550px) {
+
+    .stats-banner {
+        grid-template-columns: 1fr;
+        padding: 50px 20px;
+        gap: 45px;
+    }
+
+    .stat-number {
+        font-size: 30px;
+    }
+
+    .stat-number span {
+        font-size: 30px;
+    }
+
+}
+
+
+
+.design-build-deliver {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.design-build-deliver b {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 400;
+}
+/* banner item */
+
+.hero-slider1 {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+   </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <a href="#home" class="logo">
+        <img src="/images/sap_logo.jpeg" alt="" style="height: 100px;width: 260px;"> <!--  -->
+    </a>
+
+    <!-- DESKTOP NAVIGATION -->
+    <nav class="navbar-menu" style="align-self: self-start;">
+        <div><a href="#home">HOME</a></div>
+        <div><a href="#projects">PROJECTS</a></div>
+        <div><a href="#about">ABOUT US</a></div>
+        <div><a href="#contact">CONTACT US</a></div>
+    </nav>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">
+        <div class="menu-lines">
+            <span></span>
+            <span></span>
+        </div>
+        <b>MENU</b>
+    </button>
+
+</header>
+
+<nav class="mobile-menu" id="Menu">
+
+    <button class="close-btn" id="closeBtn">
+        CLOSE ×
+    </button>
+
+    <div class="menu-links">
+
+        <a href="#home" class="menu-link">HOME</a>
+        <a href="#projects" class="menu-link">PROJECTS</a>
+        <a href="#about" class="menu-link">ABOUT US</a>
+        <a href="#contact" class="menu-link">CONTACT US</a>
+
+    </div>
+
+</nav>
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+    <!--
+    <div class="hero-slider">
+        <div class="hero-slide active"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+    </div> -->
+    <div class="hero-slider1">
+    <video class="hero-video"
+           autoplay
+           muted
+           loop
+           playsinline
+           preload="auto">
+        <source src="{% static 'images/VIDEO-2025-05-23-17-38-36 (1).mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+
+        <p class="hero-top reveal"></p> 
+
+        <div class="hero-bottom">
+            <div class="hero-title">
+
+                <span class="reveal">
+                    <span style="color:#00265b;">SKY</span><span style="color: dodgerblue; margin: 0px;">ARC</span>
+                </span>
+                <h6 style="color: #576677;">PROJECTS</h6>
+                <!--<span class="reveal delay-2"></span>-->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LIFE AT CENTRE
+========================= -->
+
+<section class="life" id="about">
+
+    <!--<div class="section-number"></div>-->
+    <div class="life-heading">
+        <p class="eyebrow">OUR APPROACH</p>
+        <h1>
+            WHO WE<br>
+            ARE / ABOUT US
+        </h1>
+    </div>
+    <h3>Built on Experience. Designed for What’s Next.</h3>
+    <br>
+    <div>
+    <span>
+        SkyArc Projects is a <b>Design & Build, Interior Fit-Out, Civil Works and Project Management company</b> delivering spaces from initial concept through to final handover.
+    </span> 
+    <br><br>
+    <span>We bring together <b>architecture, engineering, procurement, commercial management and on-site execution</b> under one coordinated delivery structure — giving our clients a single point of responsibility throughout the project lifecycle.</span>
+
+    <br><br>
+    <span>
+        Our foundations are built on <b>more than a decade of practical design and construction experience, including 150+ residential and interior projects delivered through our legacy SmartNest practice. SkyArc represents the next stage of that journey, expanding this experience into larger and more complex residential, commercial, clubhouse, hospitality and institutional projects.</b>
+    </span>
+
+    <br><br>
+    <span>
+        Our approach combines <b> design with disciplined project execution. Every project is managed around clear programmes, defined budgets, quality controls, transparent procurement and strong site supervision — with safety, accountability and client satisfaction at the centre of how we work.</b>
+    </span>
+    <br><br>
+    <h3>WHAT DEFINES SKYARC</h3>
+    <br>
+
+    <h4>DESIGN-LED</h4>
+    <span>Architecture and interiors developed around function, aesthetics, constructability and the client’s vision.</span>
+
+    <br><br>
+    <h4>EXECUTION-FOCUSED</h4>
+    <span>Structured site management, procurement, coordination and quality control from mobilisation through handover.
+
+    <br><br>
+    <h4>ONE TEAM. ONE RESPONSIBILITY.</h4>
+    <span>Design, commercial, procurement and construction teams working together instead of operating in silos.</span>
+
+    <br><br>
+    <h4>SAFETY & QUALITY FIRST</h4>
+        <span>Strong site discipline, defined processes and uncompromising attention to workmanship and safe execution.</span>
+    <br><br>
+    <h4>COMMERCIAL DISCIPLINE</h4>
+        <span>Transparent budgeting, BOQ management, procurement control, progress measurement and change management.</span>
+    <br><br>
+    <h4>CLIENT-CENTRIC</h4>
+    <span>Clear communication, ownership of commitments and a focus on delivering spaces that perform long after completion.</span>
+    </div>
+<!--
+
+    <div class="life-grid">
+
+
+        <article class="life-card">
+
+            <div class="card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=80"
+                    alt="Nature"
+                >
+
+            </div>
+
+
+            <div class="card-content">
+
+                <span>01</span>
+
+                <h3>NATURE</h3>
+
+                <h4>
+                    Environmental Stewardship
+                </h4>
+
+                <p>
+                    We prioritize sustainability and minimize environmental
+                    impact through thoughtful design and responsible
+                    innovation.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="life-card">
+
+            <div class="card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
+                    alt="People"
+                >
+
+            </div>
+
+
+            <div class="card-content">
+
+                <span>02</span>
+
+                <h3>PEOPLE</h3>
+
+                <h4>
+                    Human Centric Approach
+                </h4>
+
+                <p>
+                    We create environments that enhance quality of life,
+                    promote wellbeing and foster meaningful connections.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="life-card">
+
+            <div class="card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80"
+                    alt="Space"
+                >
+
+            </div>
+
+
+            <div class="card-content">
+
+                <span>03</span>
+
+                <h3>SPACE</h3>
+
+                <h4>
+                    Spatial Harmony
+                </h4>
+
+                <p>
+                    We design spaces that intuitively support human needs,
+                    balancing function, movement and experience.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div> -->
+</section>
+
+<!-- Statistics Banner -->
+<section class="stats-banner">
+
+    <div class="stat-item">
+        <div class="stat-number">150<span>+</span></div>
+        <div class="stat-label">Projects of Legacy Experience</div>
+    </div>
+
+    <div class="stat-item">
+        <div class="stat-number">10<span>+</span> YEARS</div>
+        <div class="stat-label">Design & Build Experience</div>
+    </div>
+
+    <div class="stat-item">
+        <div class="stat-number">END-TO-END</div>
+        <div class="stat-label">Concept of Completinon</div>
+    </div>
+
+    <div class="stat-item">
+        <div class="stat-number">ONE TEAM</div>
+        <div class="stat-label design-build-deliver">Design <b style="font-weight: 900;">.</b> Build <b style="font-weight: 900;">.</b> Deliver</div>
+    </div>
+
+</section>
+
+<!-- =========================
+     BELIEF
+========================= -->
+
+<section class="belief">
+
+    <div class="belief-inner">
+
+        <p> OUR DESIGNING PARTNERS </p>
+
+        <span>
+           <h1 style="font-size: xxx-large;"> SMART </h1>
+            <span style="font-size: xxx-large;">
+                <b>NEST</b>
+            </span>
+           <h1 style="font-size: xxx-large;"> STUDIO</h1>
+            <div style="height: 40px; width: 40px;">
+                <a href="https://www.instagram.com/smartneststudio/" target="_blank" rel="noopener noreferrer">
+                    <img src="images/instagram_icon.png" alt="">
+                    <!--<i class="fa-brands fa-instagram"></i><span>INSTAGRAM</span> -->
+                </a>
+            </div>
+        </span>
+
+
+        <p class="belief-text" style="color: green;">
+
+            add videos and content
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DESIGN BEYOND
+========================= -->
+
+<section class="beyond" id="services">
+
+
+    <div class="beyond-image">
+
+        <img
+            src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1800&q=90"
+            alt="Architecture"
+        >
+
+    </div>
+
+
+    <div class="beyond-content">
+
+        <h1 class="" style="color: green;">
+            Add Content & Pic
+        </h1>
+
+
+        <h2>
+
+            DESIGNING<br>
+
+            <span>BEYOND</span><br>
+
+            STRUCTURES
+
+        </h2>
+
+
+        <p>
+
+            Our commitment is to create spaces with depth and intention.
+            We move beyond aesthetics to craft environments grounded in
+            purpose, shaped by human needs and built to elevate the
+            experience of living and working.
+
+        </p>
+
+
+        <!--<a href="#about" class="text-link">
+
+            ABOUT US
+
+            <span>↗</span>
+
+        </a> -->
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RESEARCH
+========================= -->
+<!--
+<section class="research">
+
+    <div class="research-content">
+
+
+        <div>
+
+            <p class="eyebrow">
+                EVOLVE
+            </p>
+
+            <h2>
+                RESEARCH<br>
+                AND<br>
+                INNOVATION
+            </h2>
+
+        </div>
+
+
+        <div class="research-text">
+
+            <h3>
+
+                EVOLVE IS OUR COMMITMENT TO NEVER
+                STOPPING AT “THIS IS ENOUGH”.
+
+            </h3>
+
+
+            <p>
+
+                We question, explore and ask: what more?
+                Through continuous research and innovation,
+                we expand our capabilities, uncover new design
+                possibilities and build future-focused solutions.
+
+            </p>
+
+
+            <a href="#projects" class="text-link">
+
+                FIND OUT MORE
+
+                <span>↗</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+-->
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section class="projects" id="projects">
+
+    <div class="projects-header">
+        <p class="eyebrow"> SELECTED WORK </p>
+        <h2> OUR PROJECTS </h2>
+
+        <h1 style="color: green;">Add Project Pictures </h1>
+
+    </div>
+
+    <div class="project-list">
+        <!-- PROJECT 1 -->
+        <article class="project-item">
+
+            <div class="project-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=90"
+                    alt="Project"
+                >
+            </div>
+
+            <div class="project-info">
+
+                <span> 01 / PROJECT ONE </span>
+
+                <h3>
+                    SHAPING A SPACE<br>
+                    WHERE DESIGN MEETS<br>
+                    POSSIBILITY
+                </h3>
+                <a href="#"> VIEW PROJECT ↗ </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 2 -->
+
+        <article class="project-item reverse">
+            <div class="project-image">
+                <img
+                    src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1600&q=90"
+                    alt="Project"
+                >
+            </div>
+
+
+            <div class="project-info">
+
+                <span> 02 / PROJECT TWO</span>
+                <h3>
+                    TURNING A TOWER<br>
+                    INTO A SYMBOL OF<br>
+                    POSSIBILITY
+                </h3>
+
+
+                <a href="#"> VIEW PROJECT ↗ </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROJECT 3 -->
+
+        <article class="project-item">
+            <div class="project-image">
+                <img
+                    src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=90"
+                    alt="Project"
+                >
+            </div>
+
+            <div class="project-info">
+
+                <span> 03 / PROJECT THREE </span>
+
+                <h3>
+                    TURNING A HIGH-RISE<br>
+                    INTO A BREATH OF<br>
+                    NATURE
+                </h3>
+
+                <a href="#"> VIEW PROJECT ↗ </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="all-projects">
+
+        <a href="#contact"> VIEW ALL PROJECTS ↗</a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STATEMENT
+========================= 
+
+<section class="statement">
+
+    <p>
+        ARCHITECTURE FOR
+    </p>
+
+
+    <h2>
+
+        <span>PEOPLE</span>
+
+        <span>PLANET</span>
+
+        <span>PURPOSE</span>
+
+    </h2>
+
+</section>
+-->
+
+<!-- =========================
+     ABOUT
+=========================
+
+<section class="about" id="">
+
+
+    <div class="about-intro">
+
+        <p class="eyebrow">
+            ABOUT US
+        </p>
+
+
+        <h2>
+
+            CARE TO<br>
+            ACHIEVE
+
+        </h2>
+
+
+        <p>
+
+            We dare to question, explore and redefine
+            the boundaries of design. Our diverse expertise
+            converges to create solutions that go beyond
+            the brief.
+
+        </p>
+
+    </div>
+
+
+    <div class="values">
+
+
+        <article>
+
+            <span>01</span>
+
+            <h3>
+                DARE TO DREAM
+            </h3>
+
+            <p>
+
+                Boldness and creativity drive us to think
+                outside the box, push boundaries and envision
+                innovative solutions.
+
+            </p>
+
+        </article>
+
+
+        <article>
+
+            <span>02</span>
+
+            <h3>
+                CARE TO ACHIEVE
+            </h3>
+
+            <p>
+
+                Compassion, responsibility and integrity guide us
+                in pursuing ambitious goals sustainably and ethically.
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+ -->
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact" style="height: 500px;">
+
+    <div class="belief-inner"> <!--contact-inner -->
+
+        <p> HAVE AN IDEA? </p>
+
+        <h2>
+            LET'S<br>
+            TALK.
+        </h2>
+
+       <!-- <a href="mailto:hello@example.com" style="color: green;">
+            Add company Email ↗
+        </a> -->
+
+    </div>
+        <a href="mailto:hello@example.com" style="color: green;">
+            Add company Email ↗
+        </a>
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer style="background-color: #e7e4dc; color: #111;">
+
+    <div class="footer-main" style="padding-bottom: 20px;">
+
+        <!-- LEFT: GOOGLE MAP -->
+        <div class="col-lg-8 mb-5 col-sm-6" style="padding-bottom: 15px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7612.93771992233!2d78.38103900000002!3d17.437259199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9397fde6d84f%3A0x135d3cd03a024574!2sAwfis%20Ohris%20Tech%20Park!5e0!3m2!1sen!2sin!4v1786964467676!5m2!1sen!2sin"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+        </div>
+
+        <!-- RIGHT: FOOTER CONTENT -->
+        <div class="col-lg-4 col-md-6 col-sm-6">
+
+            <div class="footer-contact">
+                <p> GET IN TOUCH</p>
+                <a href="#home" class="footer-logo">
+                    <span style="color: #00265b;">SKY</span><span style="color: dodgerblue;">ARC</span><span style="color: #576677;"> PROJECTS.</span>
+                </a>
+
+                <p>      
+                    <a href="mailto:sharathkallepu@skyarcprojects.com">
+                        <i class="fa fa-envelope" aria-hidden="true" style="padding-right: 3px;"></i> sharathkallepu@skyarcprojects.com
+                    </a>
+                </p>
+                <p>
+                    <a href="tel:9032820333">
+                        <i class="fa fa-phone" aria-hidden="true" style="padding-right: 3px;"></i> +91 9032820333
+                    </a>
+                </p>
+                <p>      
+                    <a href="mailto:swathi@skyarcprojects.com">
+                        <i class="fa fa-envelope" aria-hidden="true" style="padding-right: 3px;"></i> swathi@skyarcprojects.com 
+                    </a>
+                </p>
+                <p>
+                    <a href="tel:9900977344">
+                        <i class="fa fa-phone" aria-hidden="true" style="padding-right: 3px;"></i> +91 9900977344
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 <a href="https://skyarcprojects.com/" target="_blank">
+            <span style="color: #00265b;"><b>SKY</b><span style="color: dodgerblue;"><b>ARC</b></span></span>
+            <span style="color: #576677;"><b> PROJECTS.</b></span></a>
+        </p>
+        <div style="text-align: center;">
+            <a href="#home">BACK TO TOP ↑</a>
+        </div>
+    </div>
+
+</footer>
+<!-- ahhd vygy tqbv yady Copyright Reserved to
+<footer style="background-color: #e7e4dc; color: #111;">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 mb-5 col-sm-6">
+            <div id="map-canvas">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6826070832376!2d78.4508705!3d17.427013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90c8506a0489%3A0xa6b6b51a864306c6!2sAmrutha%20Sales%20Corporation!5e0!3m2!1sen!2sin!4v1742570793600!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="widget widget-contact mb-5 mb-lg-0">
+              <h4 class="text-capitalize mb-3">Get in Touch</h4>
+              <div class="divider mb-4"></div>
+              <div class="footer-contact-block mb-4">
+
+                <h4 class="mt-2"><a href="tel:+23-345-67890">contact@amruthasalescorporation.com</a></h4>
+              </div>
+              <div class="footer-contact-block">
+                <div class="icon d-flex align-items-center"><span class="h6 mb-0">Mon to Sat : 09:30 - 18:30</span></div>
+                <h4 class="mt-2"><a href="tel:+23-345-67890">+91 9948349298</a></h4>
+              </div>
+
+              <div class="footer-contact-block" style="margin-top: 35px;">
+                <h6 class="mt-2"><a class="navbar-brand" href="#" style="color:#fd4c4c">Amrutha Sales Corporation</a></h6>
+                <p style="font-size: small;font-weight: bold;">Amrutha Sales Corporation continues to set industry benchmarks by offering superior quality products and unmatched service. With a legacy of excellence and a vision for growth, we remain committed to empowering healthcare providers and contributing to improved patient care across Telangana and Andhra Pradesh.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    <div class="footer-bottom">
+        <p>
+            © 2026. ALL RIGHTS RESERVED.
+        </p>
+
+        <a href="#home">
+            BACK TO TOP ↑
+        </a>
+    </div>
+</footer>
+-->
+        <!--
+<footer style="background-color: #e7e4dc; color: #111;">
+
+
+    <div class="footer-top" >
+        <div class="container">
+    <div class="col-lg-8 mb-5 col-sm-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6826070832376!2d78.4508705!3d17.427013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90c8506a0489%3A0xa6b6b51a864306c6!2sAmrutha%20Sales%20Corporation!5e0!3m2!1sen!2sin!4v1742570793600!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        </div>
+
+
+        <a href="#home" class="footer-logo">
+
+            <span style="color: #00265b;">SKY</span><span style="color: dodgerblue;">ARC</span><span style="color: gray;"> PROJECTS.</span>
+
+        </a> 
+
+        <div class="footer-nav">
+
+            <a href="#home">HOME</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#services">SERVICES</a>
+            <a href="#about">ABOUT US</a>
+            <a href="#contact">CONTACT US</a>
+
+        </div> 
+
+
+        <div class="footer-contact">
+        <a href="#home" class="footer-logo">
+
+            <span style="color: #00265b;">SKY</span><span style="color: dodgerblue;">ARC</span><span style="color: gray;"> PROJECTS.</span>
+
+        </a>
+            <a href="mailto:sharathkallepu@skyarcprojects.com">
+                sharathkallepu@skyarcprojects.com
+            </a>
+
+            <p>
+                +91 00000 00000
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026. ALL RIGHTS RESERVED.
+        </p>
+
+        <a href="#home">
+            BACK TO TOP ↑
+        </a>
+
+    </div>
+
+</footer> -->
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("Menu");
+    const closeBtn = document.getElementById("closeBtn");
+    const menuLinks = document.querySelectorAll(".mobile-menu .menu-link");
+
+    menuBtn.addEventListener("click", function () {
+        mobileMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+
+    closeBtn.addEventListener("click", function () {
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = "";
+    });
+
+    menuLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+            mobileMenu.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+    });
+
+
+    /* CLOSE WHEN CLICKING / TOUCHING OUTSIDE MENU */
+    document.addEventListener("click", function (event) {
+        if (
+            mobileMenu.classList.contains("active") &&
+            !mobileMenu.contains(event.target) &&
+            !menuBtn.contains(event.target)
+        ) {
+            mobileMenu.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    });
+
+
+    /* SCROLL REVEAL */
+
+    const observer = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        },
+        { threshold: 0.15 }
+    );
+
+    const animatedElements = document.querySelectorAll(
+        ".life-card, .beyond-content, .research-text, .project-item, .values article"
+    );
+
+    animatedElements.forEach(function (element) {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(50px)";
+        element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        observer.observe(element);
+    });
+
+
+    /* HERO PARALLAX */
+
+    const heroSlider = document.querySelector(".hero-slider");
+
+    window.addEventListener("scroll", function () {
+        const scrollY = window.scrollY;
+
+        if (scrollY < window.innerHeight && heroSlider) {
+            heroSlider.style.transform =
+                "translateY(" + (scrollY * 0.15) + "px)";
+        }
+    });
+
+
+    /* HEADER EFFECT 
+
+    const header = document.querySelector(".header");
+
+
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 100) {
+
+            header.style.background =
+                "rgba(0,0,0,0.55)";
+
+            header.style.backdropFilter =
+                "blur(8px)";
+
+        }
+
+        else {
+
+            header.style.background =
+                "transparent";
+
+            header.style.backdropFilter =
+                "none";
+
+        }
+
+    }); */
+
+    /* HERO AUTO IMAGE SLIDER */
+
+    const heroSlides = document.querySelectorAll(".hero-slide");
+
+    let currentSlide = 0;
+
+    setInterval(function () {
+
+        heroSlides[currentSlide].classList.remove("active");
+
+        currentSlide++;
+
+        if (currentSlide >= heroSlides.length) {
+            currentSlide = 0;
+        }
+
+        heroSlides[currentSlide].classList.add("active");
+
+    }, 5000);
+
+
+
+
+</script>
+
+
+</body>
+</html>
