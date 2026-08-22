@@ -1474,6 +1474,70 @@
     object-position: center;
     display: block;
 }
+
+
+/* ================================
+   STATS BANNER ANIMATION
+================================ */
+
+.stats-banner .stat-item {
+    opacity: 0;
+    transform: translateY(45px);
+}
+
+/* Animate when visible */
+.stats-banner.animate .stat-item {
+    animation: statReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.stats-banner.animate .stat-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stats-banner.animate .stat-item:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.stats-banner.animate .stat-item:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.stats-banner.animate .stat-item:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+@keyframes statReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(45px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Small elegant number emphasis */
+.stats-banner.animate .stat-number {
+    animation: statPulse 0.8s ease-out forwards;
+}
+
+@keyframes statPulse {
+    0% {
+        transform: scale(0.85);
+    }
+
+    70% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+    
    </style>
 </head>
 
@@ -2472,6 +2536,31 @@
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const statsBanner = document.querySelector(".stats-banner");
+
+    const observer = new IntersectionObserver(function (entries) {
+
+        entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+                statsBanner.classList.add("animate");
+
+                observer.unobserve(statsBanner);
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.35
+    });
+
+    observer.observe(statsBanner);
+
+});
 
 </script>
 
